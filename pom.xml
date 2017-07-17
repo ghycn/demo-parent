@@ -10,6 +10,7 @@
     <module>demo-service</module>
     <module>demo-util</module>
     <module>demo-web</module>
+      <module>demo-entity</module>
   </modules>
   
     <properties>
@@ -17,7 +18,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--指定Maven用什么编码来呈现站点的HTML文件 -->
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <mysql.version>6.0.6</mysql.version>
+        <mysql.version>5.1.40</mysql.version>
         <spring.version>4.2.3.RELEASE</spring.version>
         <hibernate.version>5.2.10.Final</hibernate.version>
     </properties>
@@ -82,5 +83,26 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
         </dependency>
-    </dependencies>    
+
+        <!--commons-dbcp -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.4</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
