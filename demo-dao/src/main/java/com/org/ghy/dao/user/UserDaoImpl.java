@@ -18,14 +18,12 @@ public class UserDaoImpl implements UserDao {
 
     public List<UserEntity> queryUserList() {
         DetachedCriteria criteria= DetachedCriteria.forClass(UserEntity.class);
-        List<UserEntity> list = (List<UserEntity>) hibernateTemplate.findByCriteria(criteria);
+        List<UserEntity> list = (List<UserEntity>)hibernateTemplate.findByCriteria(criteria);
         System.out.println(list.size());
 
-        String sql = " select * from user  ";
-        Session session = this.hibernateTemplate.getSessionFactory().openSession();
-        List userList = session.createSQLQuery(sql).list();
-        System.out.println(userList.size());
-        session.close();
-        return userList;
+
+        UserEntity user = hibernateTemplate.get(UserEntity.class,"1");
+        System.out.println(user.getName());
+        return list;
     }
 }
